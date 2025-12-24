@@ -1,0 +1,43 @@
+OWASP TOP 10
+-> The OWASP Top 10 is a standard awareness document for developers and web application security.
+   It represents a broad consensus about the most critical security risks to web applications.
+
+The Top 10:2021 List
+A01 Broken Access Control
+A02 Cryptographic Failures
+A03 Injection
+A04 Insecure Design
+A05 Security Misconfiguration
+A06 Vulnerable and Outdated Components
+A07 Identification and Authentication Failures
+A08 Software and Data Integrity Failures
+A09 Security Logging and Monitoring Failures
+A10 Server Side Request Forgery (SSRF)
+
+
+What is CSRF?
+-> CSRF stands for Cross-site Request Forgery
+-> Using the session id of a particular site stored in the cookie,
+   Hackers can force the browser to send it automatically to the target site.
+-> The session is already secure, but the problem is automatic attachment with other sites.
+-> By defualt Spring Security will take care of it.
+-> There are multiple ways of handling it, one of the way is:
+-> What if with every request you get back in return is a token. So that next time
+   If you send the request then you have to submit the token as well.
+-> Out of GET, POST, PUT, DELETE Http requests GET is the most safest as you are not change the data
+   on the server side.
+   By default Spring Security will enforces CSRF on PUT, POST, DELETE, PATCH but not on GET, HEAD
+   OPTIONS.
+
+
+SameSite --> strict
+-> The earlier issue with Csrf Was that session id could is accessed from other sites by manipulating
+   browser requests.
+   But SameSite is a cookie-level protection that tells the browser. Do not send this cookie on
+   cross site requests.
+
+   There are 3 different values to this.
+   lax : Cookie sent on top-level GET navigations
+   Strict : Cookie sent when url origin matches exactly
+   None : Cookie sent everywhere.
+
